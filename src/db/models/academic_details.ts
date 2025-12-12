@@ -14,7 +14,6 @@ interface AcademicDetailsAttributes {
     currentSemester: string;
     section?: string;
     rollNumber?: string;
-
     status: "active" | "graduated" | "dropout";
 
     createdAt?: Date;
@@ -30,13 +29,11 @@ class AcademicDetails extends Model<AcademicDetailsAttributes, AcademicDetailsIn
     public studentId!: number;
     public collegeId!: number;
     public streamId!: number;
-
     public admissionYear!: number;
     public currentYear!: string;
     public currentSemester!: string;
     public section!: string;
     public rollNumber!: string;
-
     public status!: "active" | "graduated" | "dropout";
 
     public readonly createdAt!: Date;
