@@ -1,23 +1,14 @@
 import { Model, DataTypes, Optional } from "sequelize";
 import sequelizeConnection from "../config";
 
-
 interface UserAttributes {
     userId: number;
-    name: string;
-    fatherName: string;
-    motherName?: string;
-    guardianName?: string;
-    role: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password?: string;
     mobile: string;
-    fatherMobile: string;
-    motherMobile?: string;
-    guardianMobile?: string;
-    address: string;
-    college: string;
-    stream?: string;
+    role: string;
     is_deleted?: boolean;
 
     createdAt?: Date;
@@ -25,25 +16,17 @@ interface UserAttributes {
     deletedAt?: Date;
 }
 
-export interface userInput extends Optional<UserAttributes, "userId" | "password"> { }
-export interface userOutput extends Required<UserAttributes> { }
+export interface UserInput extends Optional<UserAttributes, "userId" | "password" | "is_deleted"> { }
+export interface UserOutput extends Required<UserAttributes> { }
 
-class User extends Model<UserAttributes, userInput> implements UserAttributes {
+class User extends Model<UserAttributes, UserInput> implements UserAttributes {
     public userId!: number;
-    public name!: string;
-    public fatherName!: string;
-    public motherName!: string;
-    public guardianName!: string;
-    public role!: string;
+    public firstName!: string;
+    public lastName!: string;
     public email!: string;
     public password?: string;
     public mobile!: string;
-    public fatherMobile!: string;
-    public motherMobile!: string;
-    public guardianMobile!: string;
-    public address!: string;
-    public college!: string;
-    public stream!: string;
+    public role!: string;
     public is_deleted!: boolean;
 
     public readonly createdAt!: Date;
@@ -51,84 +34,51 @@ class User extends Model<UserAttributes, userInput> implements UserAttributes {
     public readonly deletedAt!: Date;
 }
 
-User.init({
-    userId: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
+User.init(
+    {
+        userId: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
+        },
+        firstName: {
+            type: DataTypes.STRING(50),
+            allowNull: false,
+        },
+        lastName: {
+            type: DataTypes.STRING(50),
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING(150),
+            allowNull: false,
+            unique: true,
+            validate: { isEmail: true },
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        mobile: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+        role: {
+            type: DataTypes.STRING(50),
+            allowNull: false,
+        },
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
     },
-    name: {
-        type: DataTypes.STRING(150),
-        allowNull: false,
-    },
-    fatherName: {
-        type: DataTypes.STRING(150),
-        allowNull: false
-    },
-    motherName: {
-        type: DataTypes.STRING(150),
-        allowNull: true
-    },
-    guardianName: {
-        type: DataTypes.STRING(150),
-        allowNull: true
-    },
-    role: {
-        type: DataTypes.STRING(50),
-        allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING(150),
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
-        }
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    mobile: {
-        type: DataTypes.STRING(20),
-        allowNull: false
-    },
-    fatherMobile: {
-        type: DataTypes.STRING(20),
-        allowNull: false
-    },
-    motherMobile: {
-        type: DataTypes.STRING(20),
-        allowNull: true
-    },
-    guardianMobile: {
-        type: DataTypes.STRING(20),
-        allowNull: true
-    },
-    address: {
-        type: DataTypes.STRING(255),
-        allowNull: false
-    },
-    college: {
-        type: DataTypes.STRING(255),
-        allowNull: false
-    },
-    stream: {
-        type: DataTypes.STRING(150),
-        allowNull: false
-    },
-    is_deleted: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
+    {
+        sequelize: sequelizeConnection,
+        tableName: "users",
+        timestamps: true,
+        paranoid: true,
     }
-
-}, {
-    timestamps: true,
-    paranoid: true,
-    sequelize: sequelizeConnection,
-    tableName: "users"
-});
+);
 
 export default User;
