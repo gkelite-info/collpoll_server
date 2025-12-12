@@ -46,7 +46,7 @@ Fee.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "students",
+                model: "student_profile",
                 key: "studentId",
             },
             onDelete: "CASCADE",

@@ -1,5 +1,5 @@
 import { Model, DataTypes, Optional } from "sequelize";
-import sequelizeConnection from "../config";
+import sequelizeConnection from "../../config";
 import Stream from "./stream";
 
 interface SubjectAttributes {
