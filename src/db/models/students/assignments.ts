@@ -1,6 +1,6 @@
 import { Model, DataTypes, Optional } from "sequelize";
-import Subject from "./subject";
 import sequelizeConnection from "../../config";
+import Subject from "./subjects";
 
 interface AssignmentAttributes {
     assignmentId: number;
@@ -92,6 +92,6 @@ Assignment.init(
 );
 
 Subject.hasMany(Assignment, { foreignKey: "subjectId", as: "assignments" });
-Assignment.belongsTo(Subject, { foreignKey: "subjectId", as: "subject" });
+Assignment.belongsTo(Subject, { foreignKey: "subjectId", as: "subjects" });
 
 export default Assignment;

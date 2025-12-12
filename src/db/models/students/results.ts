@@ -1,7 +1,7 @@
 import { Model, DataTypes, Optional } from "sequelize";
 import sequelizeConnection from "../../config";
 import User from "../user";
-import Subject from "./subject";
+import Subject from "./subjects";
 
 interface ResultAttributes {
     resultId: number;
