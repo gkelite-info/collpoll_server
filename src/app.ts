@@ -9,7 +9,7 @@ const port = process.env.PORT;
 dbInit();
 
 app.get('/', (req, res) => {
-    res.send("Heyy collpoll");
+    res.send("Heyy digicampus");
 });
 
 app.listen(port, () => {

@@ -3,6 +3,9 @@ import College from "./models/college";
 import Assignment from "./models/students/assignments";
 import Attendance from "./models/students/attendance";
 import Fee from "./models/students/fee";
+import SkillCategory from "./models/students/profile/skills/SkillCategory";
+import Skill from "./models/students/profile/skills/skills";
+import UserSkill from "./models/students/profile/skills/userSkill";
 import Result from "./models/students/results";
 import Stream from "./models/students/stream";
 import StudentProfile from "./models/students/student_profiles";
@@ -21,6 +24,9 @@ async function init() {
     await Fee.sync({ alter: isDev });
     await Result.sync({ alter: isDev });
     await AcademicDetails.sync({ alter: isDev });
+    // await SkillCategory.sync({ alter: isDev });
+    // await Skill.sync({ alter: isDev });
+    // await UserSkill.sync({ alter: isDev });
 }
 
 function dbInit() {
