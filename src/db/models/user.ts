@@ -3,12 +3,13 @@ import sequelizeConnection from "../config";
 
 interface UserAttributes {
     userId: number;
-    firstName: string;
-    lastName: string;
+    fullName: string;
     email: string;
     password?: string;
     mobile: string;
-    role: string;
+    linkedIn: string;
+    collegeId?: number | null;
+    role?: string;
     is_deleted?: boolean;
 
     createdAt?: Date;
@@ -21,12 +22,13 @@ export interface UserOutput extends Required<UserAttributes> { }
 
 class User extends Model<UserAttributes, UserInput> implements UserAttributes {
     public userId!: number;
-    public firstName!: string;
-    public lastName!: string;
+    public fullName!: string;
     public email!: string;
     public password?: string;
     public mobile!: string;
-    public role!: string;
+    public linkedIn!: string;
+    public collegeId?: number | null;
+    public role?: string;
     public is_deleted!: boolean;
 
     public readonly createdAt!: Date;
@@ -42,13 +44,9 @@ User.init(
             autoIncrement: true,
             allowNull: false,
         },
-        firstName: {
+        fullName: {
             type: DataTypes.STRING(50),
             allowNull: false,
-        },
-        lastName: {
-            type: DataTypes.STRING(50),
-            allowNull: false
         },
         email: {
             type: DataTypes.STRING(150),
@@ -63,10 +61,26 @@ User.init(
         mobile: {
             type: DataTypes.STRING(20),
             allowNull: false,
+            unique: true
+        },
+        linkedIn: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+            unique: true
+        },
+        collegeId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "colleges",
+                key: "collegeId",
+            },
+            onUpdate: "CASCADE",
+            onDelete: "SET NULL",
         },
         role: {
             type: DataTypes.STRING(50),
-            allowNull: false,
+            allowNull: true,
         },
         is_deleted: {
             type: DataTypes.BOOLEAN,
