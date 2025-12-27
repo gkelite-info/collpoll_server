@@ -60,7 +60,7 @@ CompetitiveExam.init(
       allowNull: false,
     },
     score: {
-      type: DataTypes.DECIMAL(5, 2),
+      type: DataTypes.DECIMAL(6, 2),
       allowNull: false,
     },
 
