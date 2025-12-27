@@ -20,35 +20,36 @@ import SecondaryEducation from "./models/students/profile/secondary_education";
 import UndergraduateEducation from "./models/students/profile/undergraduate_education";
 import PhDEducation from "./models/students/profile/phd_education";
 import EmploymentDetails from "./models/students/profile/employment";
+import AcademicAchievement from "./models/students/profile/academicAchievement";
 
 async function init() {
-    const isDev = false;
-    await User.sync({ alter: isDev });
-    await College.sync({ alter: isDev });
-    await Stream.sync({ alter: isDev });
-    await Subject.sync({ alter: isDev });
-    await Assignment.sync({ alter: isDev });
-    await Attendance.sync({ alter: isDev });
-    await StudentProfile.sync({ alter: isDev });
-    await Fee.sync({ alter: isDev });
-    await Result.sync({ alter: isDev });
-    await AcademicDetails.sync({ alter: isDev });
-    // await SkillCategory.sync({ alter: isDev });
-    // await Skill.sync({ alter: isDev });
-    // await UserSkill.sync({ alter: isDev });
-    await PrimaryEducation.sync({ alter: isDev });
-    await SecondaryEducation.sync({ alter: isDev });
-    await UndergraduateEducation.sync({ alter: isDev });
-    await PhDEducation.sync({ alter: isDev });
-    await InternshipDetails.sync({ alter: isDev });
-    await ProjectDetails.sync({ alter: isDev });
-    await ProfileSummaryDetails.sync({ alter: isDev });
-    await CompetitiveExam.sync({ alter: isDev });
-    await EmploymentDetails.sync({ alter: isDev });
+  const isDev = false;
+  await User.sync({ alter: isDev });
+  await College.sync({ alter: isDev });
+  await Stream.sync({ alter: isDev });
+  await Subject.sync({ alter: isDev });
+  await Assignment.sync({ alter: isDev });
+  await Attendance.sync({ alter: isDev });
+  await StudentProfile.sync({ alter: isDev });
+  await Fee.sync({ alter: isDev });
+  await Result.sync({ alter: isDev });
+  await AcademicDetails.sync({ alter: isDev });
+  // await SkillCategory.sync({ alter: isDev });
+  // await Skill.sync({ alter: isDev });
+  // await UserSkill.sync({ alter: isDev });
+  await PrimaryEducation.sync({ alter: isDev });
+  await SecondaryEducation.sync({ alter: isDev });
+  await UndergraduateEducation.sync({ alter: isDev });
+  await PhDEducation.sync({ alter: isDev });
+  await InternshipDetails.sync({ alter: isDev });
+  await ProjectDetails.sync({ alter: isDev });
+  await ProfileSummaryDetails.sync({ alter: isDev });
+  await CompetitiveExam.sync({ alter: isDev });
+  await EmploymentDetails.sync({ alter: isDev });
+  await AcademicAchievement.sync({ alter: isDev });
 }
 
 function dbInit() {
-    init();
+  init();
 }
-
 export default dbInit;
