@@ -19,6 +19,7 @@ import PrimaryEducation from "./models/students/profile/primary_education";
 import SecondaryEducation from "./models/students/profile/secondary_education";
 import UndergraduateEducation from "./models/students/profile/undergraduate_education";
 import PhDEducation from "./models/students/profile/phd_education";
+<<<<<<< Updated upstream
 import EmploymentDetails from "./models/students/profile/employment";
 import AcademicAchievement from "./models/students/profile/academicAchievement";
 
@@ -47,6 +48,39 @@ async function init() {
   await CompetitiveExam.sync({ alter: isDev });
   await EmploymentDetails.sync({ alter: isDev });
   await AcademicAchievement.sync({ alter: isDev });
+=======
+import Certification from "./models/students/profile/Accomplishments/certifications";
+import Awards from "./models/students/profile/Accomplishments/awards";
+import ClubComittee from "./models/students/profile/Accomplishments/clubcommittee";
+import Language from "./models/students/profile/Accomplishments/languages";
+import FacultyAssignment from "./models/Faculty/FacultyAssignment";
+
+async function init() {
+    const isDev = false;
+    await User.sync({ alter: isDev});
+    await College.sync({ alter: isDev });
+    await Stream.sync({ alter: isDev });
+    await Subject.sync({ alter: isDev });
+    await Assignment.sync({ alter: isDev });
+    await Attendance.sync({ alter: isDev });
+    await StudentProfile.sync({ alter: isDev });
+    await Fee.sync({ alter: isDev });
+    await Result.sync({ alter: isDev });
+    await AcademicDetails.sync({ alter: isDev });
+    // await SkillCategory.sync({ alter: isDev });
+    // await Skill.sync({ alter: isDev });
+    // await UserSkill.sync({ alter: isDev });
+    await PrimaryEducation.sync({ alter: isDev});
+    await SecondaryEducation.sync({ alter: isDev});
+    await UndergraduateEducation.sync({ alter: isDev});
+    await PhDEducation.sync({ alter: isDev});
+    await Certification.sync({ alter: isDev});
+    await Awards.sync({ alter: isDev});
+    await ClubComittee.sync({ alter: isDev});
+    await Language.sync({ alter: isDev});
+    await FacultyAssignment.sync({ alter: isDev});
+    
+>>>>>>> Stashed changes
 }
 
 function dbInit() {
